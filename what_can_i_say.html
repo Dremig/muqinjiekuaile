@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>能和老妈说什么呢？</title>
+    <style>
+        .center {
+            width: 540px;
+            height: 120px;
+            margin: auto;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+    </style>
+</head>
+<body>
+    <div>我生性腼腆，或者用比较时兴的词来说......比较傲娇？性格倒是没有多正经，但是从来不想也不敢表达自己的爱意</div>
+    <div>所以我是不是根本没有和老妈当面说过“爱你”这句话......</div>
+    <div>我也并非钝感，抑或是不知道感恩，我深知老妈这18年来付出了许多，不论是我考上中学、还是我考上大学，都有老妈在我身后默默努力着、鼓励着我</div>
+    <div>不过我确实是个很烂的人，记得很多乱七八糟的东西，记得喜欢的女孩子的生日，记得朋友的生日，甚至记得几个动漫人物的生日，却唯独不记得老妈的生日。要不是有日历提醒，我连母亲节都要忘了。</div>
+    <div>18年来，我和老妈吵的架也数不清了，从不认真学习、到学校的选择、再到生活的方方面面。我清楚老妈说的每句话都是为我好</div>
+    <div>所以，也是在母亲节当天，我做了这个网站</div>
+    <div>有个地方需要澄清好吧老妈，那天你跟我打电话的时候我已经知道是母亲节了，只是装傻罢了，毕竟要写网站捏，而且最近太忙了。</div>
+    <div>不要看很简陋，这是我一行一行搓出来的好吧！也趁机学了乱七八糟的知识</div>
+    <div>为什么域名是.top，呢当然是因为老妈是天下top1啦！<del>当然不是因为.top比较便宜！</del></div>
+    <div>对啊，我还能跟老妈说什么呢？</div>
+    <div>点击图片看看？</div>
+    <div class = "fly-in-text">爱你，老妈，明天见！mua!</div>
+    <div id="main" class="center">
+        <img src="img/6.jpg" class="mother-image">
+    </div>
+    <audio controls>  
+        <source src="your-audio-file.mp3" type="audio/mpeg">   
+    </audio>  
+</html>
+
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script type="text/javascript">
+    let a_idx = 0;
+
+    let ac = new AudioContext();
+
+    $(function (){
+        $("body").click(function(e) {
+            const a = new Array("爱你，老妈", "明天见！");
+            const $i = $("<span/>").text(a[a_idx]);
+            a_idx = (a_idx + 1) % a.length;
+            const x = e.pageX,
+                y = e.pageY;
+            $i.css({
+                "z-index": 999999999999999999999999999999999999999999999999999999999999999999999,
+                "top": y - 20,
+                "left": x,
+                "position": "absolute",
+                "font-weight": "bold",
+                "color": color16()
+            });
+            $("body").append($i);
+            load_sound('ciallo.aac');
+            $i.animate({
+                    "top": y - 180,
+                    "opacity": 0
+                },
+                1500,
+                function() {
+                    $i.remove();
+                });
+        });
+    })
+
+    function color16(){
+        const r = Math.floor(Math.random()*256);
+        const g = Math.floor(Math.random()*256);
+        const b = Math.floor(Math.random()*256);
+        return `#${r.toString(16)}${g.toString(16)}${b.toString(16)}`;
+    }
+
+    function load_sound(url_data) {
+        const req = new XMLHttpRequest();
+        req.open('GET', url_data, true);
+        req.responseType = 'arraybuffer';
+        req.onload = function() {
+            ac.decodeAudioData(req.response, function(buffer){
+                const source = ac.createBufferSource();
+                source.buffer = buffer;
+                source.connect(ac.destination);
+                source.start(0);
+            },function (e) {
+                console.info('错误');
+            });
+        }
+        req.send();
+    }
+</script>

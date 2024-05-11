@@ -1,0 +1,105 @@
+/* “飞入”行为*/
+.fly-in-text {  
+    position: relative;  
+    animation: flyIn 2s ease-out forwards;  
+    opacity: 0;  
+    transform: translateX(-100%); 
+    font-size: 30px  ;
+    width: 300px;
+    height: auto;
+}  
+
+.fly-in-text-pro {  
+    position: relative;  
+    animation: flyIn 30s ease-out forwards;  
+    opacity: 0;  
+    transform: translateX(-100%); 
+    font-size: 30px  ;
+    width: 300px;
+    height: auto;
+}  
+
+
+@keyframes flyIn {  
+    0% {  
+        opacity: 0;  
+        transform: translateX(-100%);  
+    }  
+    100% {  
+        opacity: 1;  
+        transform: translateX(3%);  
+    }  
+}
+
+.fly-in-image {  
+    position: relative;  
+    overflow: hidden;  
+    width:auto;
+    height: auto; 
+}  
+  
+.fly-in-image img {  
+    position: absolute;  
+    top: -100%; 
+    left: 50%;  
+    transform: translateX(-50%);  
+    animation: flyInIMG 2s ease-out forwards; 
+}  
+  
+@keyframes flyInIMG {  
+    0% {  
+        top: -100%; /* 起始位置在容器外部 */  
+        opacity: 0; /* 初始透明度为0 */  
+    }  
+    100% {  
+        top: 0; /* 终止位置在容器内部 */  
+        opacity: 1; /* 终止透明度为1 */  
+    }  
+}
+
+/* 按钮样式 */
+button-container {  
+    position: relative;  
+    width: 100%;
+    height: 200px;   
+}  
+  
+.button {    
+    background-color: #4CAF50; 
+    border: none;  
+    color: white;  
+    padding: 15px 32px;  
+    text-align: center;  
+    text-decoration: none;  
+    display: inline-block;  
+    font-size: 16px;  
+    margin: 4px 2px;  
+    cursor: pointer;
+    position: relative; 
+    top: 100px; 
+    left: 500px; 
+}
+
+
+/* 字体样式选择 */
+body {  
+    font-family: "FangSong", sans-serif;  
+    font-size: 16px;  
+    color: #0b2796;  
+}
+
+
+  
+
+
+.cake-image {  
+    width: 300px; /* 设置你想要的宽度 */  
+    height: auto; /* 保持图片的宽高比 */
+    position: absolute;  
+    left: 100px;
+}
+
+.mother-image{
+    width: 300px; /* 设置你想要的宽度 */  
+    height: auto; /* 保持图片的宽高比 */
+}
